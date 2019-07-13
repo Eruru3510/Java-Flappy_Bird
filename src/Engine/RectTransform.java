@@ -13,7 +13,7 @@ public class RectTransform extends Component {
 	}
 
 	public void SetPosition (Vector2 position) {
-		Position = position;
+		Position.Set (position);
 	}
 
 	public void SetPosition (float x, float y) {

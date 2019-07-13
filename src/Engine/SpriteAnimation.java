@@ -35,7 +35,7 @@ public class SpriteAnimation extends Component {
 	}
 
 	void Paint (Graphics graphics) {
-		graphics.drawImage (Sprites.get (Index).GetImage (), (int)GetRectTransform ().GetPosition ().GetX (), (int)GetRectTransform ().GetPosition ().GetY (), (int)GetRectTransform ().GetSize ().GetX (), (int)GetRectTransform ().GetSize ().GetY (), Engine.GetJFrame ());
+		graphics.drawImage (Sprites.get (Index).GetBufferedImage (), (int)GetRectTransform ().GetPosition ().GetX (), (int)GetRectTransform ().GetPosition ().GetY (), (int)GetRectTransform ().GetSize ().GetX (), (int)GetRectTransform ().GetSize ().GetY (), Engine.GetJFrame ());
 	}
 
 	public void AddFrame (Sprite sprite) {
@@ -52,7 +52,7 @@ public class SpriteAnimation extends Component {
 	}
 
 	public void SetNativeSize () {
-		GetRectTransform ().SetSize (Sprites.get (0).GetWidth (), Sprites.get (1).GetHeight ());
+		GetRectTransform ().SetSize (Sprites.get (0).GetSize ().GetX (), Sprites.get (1).GetSize ().GetY ());
 	}
 
 	public void Play () {

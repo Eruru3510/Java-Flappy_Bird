@@ -1,38 +1,37 @@
 package Engine;
 
-import javax.swing.ImageIcon;
+import java.awt.image.BufferedImage;
+
+import javax.imageio.ImageIO;
 
 public class Sprite {
 
-	private ImageIcon ImageIcon;
-	private java.awt.Image Image;
-	private int Width, Height;
+	private BufferedImage BufferedImage;
+	private Vector2 Size = new Vector2 ();
 
 	public Sprite (String path) {
-		SetImage (path);
+		SetBufferedImage (path);
 	}
 
-	public java.awt.Image GetImage () {
-		return Image;
+	public BufferedImage GetBufferedImage () {
+		return BufferedImage;
 	}
 
-	public int GetWidth () {
-		return Width;
+	public Vector2 GetSize () {
+		return Size;
 	}
 
-	public int GetHeight () {
-		return Height;
+	public void SetBufferedImage (BufferedImage bufferedImage) {
+		Size.Set (bufferedImage.getWidth (), bufferedImage.getHeight ());
+		BufferedImage = bufferedImage;
 	}
 
-	public void SetImage (ImageIcon imageIcon) {
-		Width = imageIcon.getIconWidth ();
-		Height = imageIcon.getIconHeight ();
-		Image = imageIcon.getImage ();
-		ImageIcon = imageIcon;
-	}
-
-	public void SetImage (String path) {
-		SetImage (new ImageIcon (path));
+	public void SetBufferedImage (String path) {
+		try {
+			SetBufferedImage (ImageIO.read (getClass ().getResource (path)));
+		} catch (Exception Exception) {
+			Exception.printStackTrace ();
+		}
 	}
 
 }

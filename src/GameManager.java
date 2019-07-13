@@ -21,16 +21,18 @@ enum GameState {
 public class GameManager extends Component {
 
 	private static GameManager Instance;
+
 	private GameObject Start, GameOver;
 	private RectTransform Ground, Background, CurrentColumn;
 	private RectTransform[] Columns;
 	private SpriteAnimation Bird;
 	private Text ScoreText;
+
 	private GameState GameStatus;
 	private Random Random = new Random ();
 	private Vector2 GroundPosition = new Vector2 (), BirdPosition = new Vector2 ();
-	private float MoveSpeed = 200, Gravity = 1500, JumpForce = 500, Inertia, FallSpeed;
-	private float ColumnStartDistance = 800, ColumnSpacing = 250, ColumnMaxY = 230, ColumnMinY = 470;
+	private float MoveSpeed = 175, Gravity = 2000, JumpForce = 500, Inertia, FallSpeed;
+	private float ColumnStartDistance = 750, ColumnSpacing = 250, ColumnMaxY = 230, ColumnMinY = 470;
 	private Vector4 RestartButtonBounds = new Vector4 (140, 360, 290, 445);
 	private int Score;
 
@@ -81,10 +83,10 @@ public class GameManager extends Component {
 				GameOver.SetActive (false);
 				Score = 0;
 				CurrentColumn = null;
-				ScoreText.SetText ("Score£º0");
+				ScoreText.SetText ("Score:0");
 				FallSpeed = 0;
-				BirdPosition.Set (Background.GetSize ().GetX () * 0.25F, Background.GetSize ().GetY () * 0.4F);
 				Bird.Play ();
+				BirdPosition.Set (Background.GetSize ().GetX () * 0.25F, Background.GetSize ().GetY () * 0.4F);
 				Bird.GetRectTransform ().SetPosition (BirdPosition);
 				for (int i = 0; i < Columns.length; i++) {
 					Columns[i].SetPosition (ColumnStartDistance + (ColumnSpacing * i), GetColumnY ());
@@ -115,8 +117,7 @@ public class GameManager extends Component {
 				SetGameStatus (GameState.Run);
 				break;
 			case Run:
-				Inertia = JumpForce;
-				FallSpeed = 0;
+
 				break;
 			case GameOver:
 				if (Input.GetMousePosition ().GetX () >= RestartButtonBounds.GetX () && Input.GetMousePosition ().GetX () <= RestartButtonBounds.GetZ ()) {
@@ -130,6 +131,10 @@ public class GameManager extends Component {
 
 	private void ControlBird () {
 		FallSpeed += Gravity * Time.GetDeltaTime ();
+		if (Input.GetMouseDown (0) && GameStatus == GameState.Run) {
+			FallSpeed = 0;
+			Inertia = JumpForce;
+		}
 		BirdPosition.SetY (BirdPosition.GetY () + (FallSpeed - Inertia) * Time.GetDeltaTime ());
 		Inertia -= Inertia * Time.GetDeltaTime ();
 		if (Inertia < 0) {

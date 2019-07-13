@@ -15,7 +15,7 @@ public class Image extends Component {
 	}
 
 	protected void Paint (Graphics graphics) {
-		graphics.drawImage (Sprite.GetImage (), (int)GetRectTransform ().GetPosition ().GetX (), (int)GetRectTransform ().GetPosition ().GetY (), (int)GetRectTransform ().GetSize ().GetX (), (int)GetRectTransform ().GetSize ().GetY (), Engine.GetJFrame ());
+		graphics.drawImage (Sprite.GetBufferedImage (), (int)GetRectTransform ().GetPosition ().GetX (), (int)GetRectTransform ().GetPosition ().GetY (), (int)GetRectTransform ().GetSize ().GetX (), (int)GetRectTransform ().GetSize ().GetY (), Engine.GetJFrame ());
 	}
 
 	public Sprite GetSprite () {
@@ -27,7 +27,7 @@ public class Image extends Component {
 	}
 
 	public void SetNativeSize () {
-		GetRectTransform ().SetSize (Sprite.GetWidth (), Sprite.GetHeight ());
+		GetRectTransform ().SetSize (Sprite.GetSize ().GetX (), Sprite.GetSize ().GetY ());
 	}
 
 }

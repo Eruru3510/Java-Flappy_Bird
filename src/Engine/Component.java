@@ -18,7 +18,7 @@ public abstract class Component {
 	}
 
 	void InsideStart () {
-		if (!Started) {
+		if (Initialized && !Started) {
 			Start ();
 			Started = true;
 		}
@@ -37,7 +37,7 @@ public abstract class Component {
 	}
 
 	void InsidePaint (Graphics graphics) {
-		if (Started) {
+		if (Initialized) {
 			Paint (graphics);
 		}
 	}
