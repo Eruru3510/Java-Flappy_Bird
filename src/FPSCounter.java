@@ -2,8 +2,6 @@ import java.awt.Color;
 import java.awt.Font;
 
 import Engine.Component;
-import Engine.Debug;
-import Engine.Engine;
 import Engine.Input;
 import Engine.Text;
 import Engine.Time;
@@ -19,7 +17,8 @@ public class FPSCounter extends Component {
 		Text.SetText ("FPS:0");
 		Text.SetColor (Color.white);
 		Text.SetFont (new Font ("微软雅黑", Font.BOLD, 14));
-		Text.GetRectTransform ().SetPosition (5, 20);
+		Text.GetRectTransform ().SetPosition (5, 40);
+		Text.GetGameObject ().SetActive (false);
 	}
 
 	protected void Update () {
@@ -28,7 +27,6 @@ public class FPSCounter extends Component {
 			UpdateTime = Time.GetTime ();
 			FPS = FPSNumber;
 			FPSNumber = 0;
-			Debug.LogFormat ("已运行时间：%s 目标帧数：%s 实际帧数：%s 上一帧所耗时间：%s", Time.GetTime (), Engine.GetFrameRate (), FPS, Time.GetDeltaTime ());
 		}
 		Text.SetText (String.format ("FPS:%s X:%s Y:%s", FPS, Input.GetMousePosition ().GetX (), Input.GetMousePosition ().GetY ()));
 	}

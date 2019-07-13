@@ -69,6 +69,7 @@ public class Engine {
 			}
 		});
 		JFrame.setVisible (true);
+		JFrame.setResizable (false);
 		JFrame.setLocationRelativeTo (null);
 		while (true) {
 			FrameStartTime = System.currentTimeMillis ();

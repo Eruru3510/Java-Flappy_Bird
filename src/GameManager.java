@@ -56,7 +56,7 @@ public class GameManager extends Component {
 		ScoreText = Engine.FindGameObject ("Score").GetComponent (Text.class);
 		ScoreText.SetColor (Color.yellow);
 		ScoreText.SetFont (new Font ("Î¢ÈíÑÅºÚ", Font.BOLD, 16));
-		ScoreText.GetRectTransform ().SetPosition (5, 40);
+		ScoreText.GetRectTransform ().SetPosition (5, 20);
 
 		SetGameStatus (GameState.Start);
 	}
