@@ -32,7 +32,7 @@ public class GameManager extends Component {
 	private Random Random = new Random ();
 	private Vector2 GroundPosition = new Vector2 (), BirdPosition = new Vector2 ();
 	private float MoveSpeed = 175, Gravity = 2000, JumpForce = 500, Inertia, FallSpeed;
-	private float ColumnStartDistance = 750, ColumnSpacing = 250, ColumnMaxY = 230, ColumnMinY = 470;
+	private float ColumnStartDistance = 750, ColumnSpacing = 250, ColumnMaxY = -380, ColumnMinY = -240;
 	private Vector4 RestartButtonBounds = new Vector4 (140, 360, 290, 445);
 	private int Score;
 
@@ -178,7 +178,7 @@ public class GameManager extends Component {
 	}
 
 	private int GetColumnY () {
-		return -RandomNextInt ((int)ColumnMaxY, (int)ColumnMinY);
+		return RandomNextInt ((int)ColumnMaxY, (int)ColumnMinY);
 	}
 
 }

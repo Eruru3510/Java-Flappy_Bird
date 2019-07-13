@@ -11,7 +11,7 @@ public class Main {
 	public static void main (String[] args) {
 		Engine.SetTitle ("Flappy Bird");
 		Engine.SetSize (448, 683);
-		Engine.SetFrameRate (-1);
+		Engine.SetFrameRate (60);
 		Sprite Sprite = new Sprite ("/Images/column.png");
 		Engine.AddGameObject (new GameObject ("Game Manager", new GameManager ()));
 		Engine.AddGameObject (new GameObject ("Background", new Image (new Sprite ("/Images/bg.png"))));
