@@ -68,9 +68,9 @@ public class Engine {
 				Input.SetMousePosition (mouseEvent.getX (), mouseEvent.getY ());
 			}
 		});
-		JFrame.setVisible (true);
 		JFrame.setResizable (false);
 		JFrame.setLocationRelativeTo (null);
+		JFrame.setVisible (true);
 		while (true) {
 			FrameStartTime = System.currentTimeMillis ();
 			Update ();
