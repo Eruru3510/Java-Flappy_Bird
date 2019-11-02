@@ -23,7 +23,6 @@ public class Physics2D {
 					if (Bounds.GetX () <= TargetBounds.GetZ () && Bounds.GetZ () >= TargetBounds.GetX () && Bounds.GetY () <= TargetBounds.GetW () && Bounds.GetW () >= TargetBounds.GetY ()) {
 						Colliders.get (i).GetGameObject ().OnColliderStay (new Collision (TargetBoxCollider2D.GetGameObject ()));
 					}
-
 				}
 			}
 		}
